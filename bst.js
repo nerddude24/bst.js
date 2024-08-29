@@ -26,6 +26,34 @@ class Tree {
 
 		return root;
 	}
+
+	insert(val) {
+		let current = this.root;
+
+		while (true) {
+			if (val == current.val) return; // no duplicates
+
+			if (val < current.val) {
+				// if the left is empty, insert the node and return
+				if (current.left == null) {
+					const node = new TreeNode(val);
+					current.left = node;
+					return;
+				}
+				// else move to the left and continue
+				current = current.left;
+			} else {
+				// if the right is empty, insert the node and return
+				if (current.right == null) {
+					const node = new TreeNode(val);
+					current.right = node;
+					return;
+				}
+				// else move to the right and continue
+				current = current.right;
+			}
+		}
+	}
 }
 
 export { Tree };
