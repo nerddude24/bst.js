@@ -12,7 +12,6 @@ class Tree {
 	constructor(arr) {
 		// first clone the inputted array, then remove duplicates, then sort it.
 		const array = mergeSort([...new Set(arr.slice())]);
-		debugger;
 		this.root = this.buildTree(array, 0, array.length - 1);
 	}
 
