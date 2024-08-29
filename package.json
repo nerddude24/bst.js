@@ -1,0 +1,26 @@
+{
+	"name": "merge-sort.js",
+	"version": "1.0.0",
+	"description": "Binary Search Tree implementation in JS.",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nerddude24/bst.js.git"
+	},
+	"keywords": [
+		"dsa",
+		"algorithms",
+		"data-structures",
+		"tree"
+	],
+	"author": "nerddude",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/nerddude24/bst.js/issues"
+	},
+	"homepage": "https://github.com/nerddude24/bst.js#readme"
+}
