@@ -1,6 +1,6 @@
 import { Tree } from "./bst.js";
 
-const prettyPrint = (node, prefix = "", isLeft = true) => {
+function prettyPrint(node, prefix = "", isLeft = true) {
 	if (node === null) {
 		return;
 	}
@@ -11,47 +11,67 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 	if (node.left !== null) {
 		prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
 	}
-};
-const startingArray = [4, 5, 1, 7, 8, 9, 2, 3, 6];
-const tree = new Tree(startingArray);
-
-prettyPrint(tree.root);
-
-console.log("----------------------------------------");
-tree.insert(0);
-tree.insert(11);
-tree.remove(1);
-tree.remove(tree.root.val);
-prettyPrint(tree.root);
-
-console.log("----------------------------------------");
-const double = (node) => (node.val *= 2);
-const half = (node) => (node.val /= 2);
-tree.levelOrder(double);
-tree.preOrder(half);
-tree.inOrder(double);
-tree.postOrder(half);
-try {
-	// didn't provide callback, this should throw an error and run the catch.
-	tree.inOrder();
-} catch (error) {
-	console.log("Task failed successfully.");
 }
-prettyPrint(tree.root);
 
-console.log("----------------------------------------");
-console.log("depth(3) == " + tree.depth(3));
-console.log("height(3) == " + tree.height(3));
-console.log("depth(999) == " + tree.depth(999));
-console.log("isBalanced() == " + tree.isBalanced());
-console.log("inserting some items to unbalance the tree...");
-tree.insert(100);
+function printTreeArrays(tree) {
+	let nodeArr = [];
+
+	console.log("All elements in level order: ");
+	tree.levelOrder((node) => nodeArr.push(node.val));
+	console.log(nodeArr);
+
+	console.log();
+
+	console.log("All elements in pre order: ");
+	nodeArr = [];
+	tree.preOrder((node) => nodeArr.push(node.val));
+	console.log(nodeArr);
+
+	console.log();
+
+	console.log("All elements in order: ");
+	nodeArr = [];
+	tree.inOrder((node) => nodeArr.push(node.val));
+	console.log(nodeArr);
+
+	console.log();
+
+	console.log("All elements in post order: ");
+	nodeArr = [];
+	tree.postOrder((node) => nodeArr.push(node.val));
+	console.log(nodeArr);
+
+	console.log();
+}
+
+function genRandomArr(size, maxNum = 100) {
+	const arr = [];
+	for (let i = 0; i < size; i++) arr.push(Math.floor(Math.random() * maxNum));
+	return arr;
+}
+
+const tree = new Tree(genRandomArr(100, 100));
+console.log("is tree balanced? > " + tree.isBalanced());
+
+printTreeArrays(tree);
+
+console.log();
+console.log();
+
+console.log("Adding a few large numbers to imbalance the tree...");
 tree.insert(200);
-prettyPrint(tree.root);
-console.log("isBalanced() == " + tree.isBalanced());
+tree.insert(300);
+tree.insert(400);
 
-console.log("----------------------------------------");
-console.log("Now we balance the tree, running rebalance()");
+console.log("is tree balanced? > " + tree.isBalanced());
+
+console.log("Rebalancing the tree...");
 tree.rebalance();
+
+console.log("is tree balanced? > " + tree.isBalanced());
+
+printTreeArrays(tree);
+
+console.log("-------------------------------------");
+console.log("Final tree:");
 prettyPrint(tree.root);
-console.log("isBalanced() == " + tree.isBalanced());
