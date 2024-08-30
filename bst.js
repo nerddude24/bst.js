@@ -124,6 +124,9 @@ class Tree {
 	// This is a level order variant.
 	// More info here: https://youtu.be/86g8jAQug04
 	levelOrder(cb) {
+		if (cb == null)
+			throw new Error("Called level order but didn't provide callback!");
+
 		const nodeQueue = new Queue();
 		nodeQueue.enqueue(this.root);
 
@@ -141,6 +144,9 @@ class Tree {
 	// This is the pre-order variant
 	// More info here: https://youtu.be/gm8DUJJhmY4
 	preOrder(cb, root = this.root) {
+		if (cb == null)
+			throw new Error("Called pre order but didn't provide callback!");
+
 		if (root == null) return;
 
 		cb(root);
@@ -150,6 +156,9 @@ class Tree {
 
 	// This is the in-order variant
 	inOrder(cb, root = this.root) {
+		if (cb == null)
+			throw new Error("Called in order but didn't provide callback!");
+
 		if (root == null) return;
 
 		this.preOrder(cb, root.left);
@@ -159,6 +168,9 @@ class Tree {
 
 	// This is the post-order variant
 	postOrder(cb, root = this.root) {
+		if (cb == null)
+			throw new Error("Called post order but didn't provide callback!");
+
 		if (root == null) return;
 
 		this.preOrder(cb, root.left);

@@ -36,4 +36,12 @@ const half = (node) => (node.val /= 2);
 tree.preOrder(half);
 tree.inOrder(double);
 tree.postOrder(half);
+
+try {
+	// didn't provide callback, this should throw an error and run the catch.
+	tree.inOrder();
+} catch (error) {
+	console.log("Task failed successfully.");
+}
+
 prettyPrint(tree.root);
