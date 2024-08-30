@@ -186,6 +186,16 @@ class Tree {
 		if (target < root.val) return 1 + this.depth(target, root.left);
 		else return 1 + this.depth(target, root.right);
 	}
+
+	height(target, root = this.find(target)) {
+		// base cases
+		if (root === null) return -1;
+
+		return (
+			1 +
+			Math.max(this.height(target, root.left), this.height(target, root.right))
+		);
+	}
 }
 
 export { Tree };
