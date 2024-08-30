@@ -214,9 +214,8 @@ class Tree {
 	rebalance() {
 		if (this.isBalanced()) return;
 
-		let treeArray = [];
-		this.levelOrder((node) => treeArray.push(node.val));
-		treeArray = mergeSort(treeArray); // no need to remove dupes
+		const treeArray = [];
+		this.inOrder((node) => treeArray.push(node.val));
 
 		this.root = this._buildTree(treeArray);
 	}
