@@ -39,6 +39,6 @@ try {
 prettyPrint(tree.root);
 
 console.log("----------------------------------------");
-console.log("height(0) == " + tree.height(0));
-console.log("height(6) == " + tree.height(6));
-console.log("height(999) == " + tree.height(999));
+console.log("depth(0) == " + tree.depth(0));
+console.log("depth(6) == " + tree.depth(6));
+console.log("depth(999) == " + tree.depth(999));

@@ -178,13 +178,13 @@ class Tree {
 		cb(root);
 	}
 
-	height(target, root = this.root) {
+	depth(target, root = this.root) {
 		// base cases
 		if (root === null) return NaN;
 		if (root.val === target) return 0;
 
-		if (target < root.val) return 1 + this.height(target, root.left);
-		else return 1 + this.height(target, root.right);
+		if (target < root.val) return 1 + this.depth(target, root.left);
+		else return 1 + this.depth(target, root.right);
 	}
 }
 
