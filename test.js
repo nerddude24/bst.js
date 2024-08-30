@@ -49,3 +49,9 @@ tree.insert(100);
 tree.insert(200);
 prettyPrint(tree.root);
 console.log("isBalanced() == " + tree.isBalanced());
+
+console.log("----------------------------------------");
+console.log("Now we balance the tree, running rebalance()");
+tree.rebalance();
+prettyPrint(tree.root);
+console.log("isBalanced() == " + tree.isBalanced());

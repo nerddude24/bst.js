@@ -35,10 +35,10 @@ class Tree {
 		// first remove duplicates from array, then sort it.
 		// (faster than the other way around).
 		const array = mergeSort(removeDupes(arr));
-		this.root = this._buildTree(array, 0, array.length - 1);
+		this.root = this._buildTree(array);
 	}
 
-	_buildTree(arr, start, end) {
+	_buildTree(arr, start = 0, end = arr.length - 1) {
 		if (start > end) return null;
 
 		const mid = parseInt((start + end) / 2);
@@ -126,7 +126,9 @@ class Tree {
 	// More info here: https://youtu.be/86g8jAQug04
 	levelOrder(cb) {
 		if (cb == null)
-			throw new Error("Called level order but didn't provide callback!");
+			throw new Error(
+				"Error in Tree class: Called levelOrder but didn't provide callback!"
+			);
 
 		const nodeQueue = new Queue();
 		nodeQueue.enqueue(this.root);
@@ -146,7 +148,9 @@ class Tree {
 	// More info here: https://youtu.be/gm8DUJJhmY4
 	preOrder(cb, root = this.root) {
 		if (cb == null)
-			throw new Error("Called pre order but didn't provide callback!");
+			throw new Error(
+				"Error in Tree class: Called preOrder but didn't provide callback!"
+			);
 
 		if (root == null) return;
 
@@ -158,7 +162,9 @@ class Tree {
 	// This is the in-order variant
 	inOrder(cb, root = this.root) {
 		if (cb == null)
-			throw new Error("Called in order but didn't provide callback!");
+			throw new Error(
+				"Error in Tree class: Called inOrder but didn't provide callback!"
+			);
 
 		if (root == null) return;
 
@@ -170,7 +176,9 @@ class Tree {
 	// This is the post-order variant
 	postOrder(cb, root = this.root) {
 		if (cb == null)
-			throw new Error("Called post order but didn't provide callback!");
+			throw new Error(
+				"Error in Tree class: Called postOrder but didn't provide callback!"
+			);
 
 		if (root == null) return;
 
@@ -201,6 +209,16 @@ class Tree {
 		const rightHeight = this.height(this.root.right.val);
 
 		return Math.abs(leftHeight - rightHeight) <= 1;
+	}
+
+	rebalance() {
+		if (this.isBalanced()) return;
+
+		let treeArray = [];
+		this.levelOrder((node) => treeArray.push(node.val));
+		treeArray = mergeSort(treeArray); // no need to remove dupes
+
+		this.root = this._buildTree(treeArray);
 	}
 }
 
