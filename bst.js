@@ -168,9 +168,9 @@ class Tree {
 
 		if (root == null) return;
 
-		this.preOrder(cb, root.left);
+		this.inOrder(cb, root.left);
 		cb(root);
-		this.preOrder(cb, root.right);
+		this.inOrder(cb, root.right);
 	}
 
 	// This is the post-order variant
@@ -182,8 +182,8 @@ class Tree {
 
 		if (root == null) return;
 
-		this.preOrder(cb, root.left);
-		this.preOrder(cb, root.right);
+		this.postOrder(cb, root.left);
+		this.postOrder(cb, root.right);
 		cb(root);
 	}
 
