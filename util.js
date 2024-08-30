@@ -33,4 +33,26 @@ function removeDupes(arr) {
 	return [...new Set(arr)];
 }
 
-export { mergeSort, removeDupes };
+class Queue {
+	constructor() {
+		this._array = [];
+	}
+
+	enqueue(val) {
+		this._array.push(val);
+	}
+
+	pop() {
+		return this._array.shift();
+	}
+
+	length() {
+		return this._array.length;
+	}
+
+	isEmpty() {
+		return this._array.length === 0;
+	}
+}
+
+export { mergeSort, removeDupes, Queue };

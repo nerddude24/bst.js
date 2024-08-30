@@ -1,26 +1,4 @@
-import { mergeSort, removeDupes } from "./util.js";
-
-class Queue {
-	constructor() {
-		this._array = [];
-	}
-
-	enqueue(val) {
-		this._array.push(val);
-	}
-
-	pop() {
-		return this._array.shift();
-	}
-
-	length() {
-		return this._array.length;
-	}
-
-	isEmpty() {
-		return this._array.length === 0;
-	}
-}
+import { mergeSort, removeDupes, Queue } from "./util.js";
 
 class TreeNode {
 	constructor(val) {
