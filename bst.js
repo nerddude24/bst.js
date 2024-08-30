@@ -120,7 +120,8 @@ class Tree {
 		else return this.find(target, root.right);
 	}
 
-	// Basically forEach for trees, this is a level order variant.
+	// These 'order' methods are basically forEach for trees.
+	// This is a level order variant.
 	// More info here: https://youtu.be/86g8jAQug04
 	levelOrder(cb) {
 		const nodeQueue = new Queue();
@@ -135,6 +136,34 @@ class Tree {
 			nodeQueue.enqueue(node.left);
 			nodeQueue.enqueue(node.right);
 		}
+	}
+
+	// This is the pre-order variant
+	// More info here: https://youtu.be/gm8DUJJhmY4
+	preOrder(cb, root = this.root) {
+		if (root == null) return;
+
+		cb(root);
+		this.preOrder(cb, root.left);
+		this.preOrder(cb, root.right);
+	}
+
+	// This is the in-order variant
+	inOrder(cb, root = this.root) {
+		if (root == null) return;
+
+		this.preOrder(cb, root.left);
+		cb(root);
+		this.preOrder(cb, root.right);
+	}
+
+	// This is the post-order variant
+	postOrder(cb, root = this.root) {
+		if (root == null) return;
+
+		this.preOrder(cb, root.left);
+		this.preOrder(cb, root.right);
+		cb(root);
 	}
 }
 

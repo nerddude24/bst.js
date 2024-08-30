@@ -27,5 +27,13 @@ tree.remove(tree.root.val);
 prettyPrint(tree.root);
 
 console.log("----------------------------------------");
-tree.levelOrder((node) => (node.val *= 2));
+const double = (node) => (node.val *= 2);
+tree.levelOrder(double);
+prettyPrint(tree.root);
+
+console.log("----------------------------------------");
+const half = (node) => (node.val /= 2);
+tree.preOrder(half);
+tree.inOrder(double);
+tree.postOrder(half);
 prettyPrint(tree.root);
