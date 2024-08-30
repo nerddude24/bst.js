@@ -26,5 +26,8 @@ tree.remove(9);
 tree.remove(7);
 prettyPrint(tree.root);
 console.log("----------------------------------------");
-tree.remove(5);
+tree.remove(tree.root.val);
 prettyPrint(tree.root);
+
+console.log(tree.find(0));
+console.log(tree.find(9000));

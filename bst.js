@@ -88,6 +88,15 @@ class Tree {
 		}
 		return current;
 	}
+
+	find(target, root = this.root) {
+		// base cases
+		if (root === null) return null;
+		if (root.val === target) return root;
+
+		if (target < root.val) return this.find(target, root.left);
+		else return this.find(target, root.right);
+	}
 }
 
 export { Tree };
