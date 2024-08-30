@@ -54,6 +54,40 @@ class Tree {
 			}
 		}
 	}
+
+	remove(target, root = this.root) {
+		if (root === null) return null; // Base case
+
+		if (root.val > target) {
+			root.left = this.remove(target, root.left);
+		} else if (root.val < target) {
+			root.right = this.remove(target, root.right);
+		} else {
+			// If root matches with the given key
+
+			// Case 1: root has 0 children OR only right child.
+			if (root.left === null) return root.right;
+
+			// Case 2: root has only left child.
+			if (root.right === null) return root.left;
+
+			// Case 3: root has both children
+			let successor = this._getSuccessor(root);
+			root.val = successor.val;
+			root.right = this.remove(successor.val, root.right);
+		}
+
+		return root;
+	}
+
+	// returns the successor of the given node. It's only used by remove().
+	_getSuccessor(current) {
+		current = current.right;
+		while (current !== null && current.left !== null) {
+			current = current.left;
+		}
+		return current;
+	}
 }
 
 export { Tree };
