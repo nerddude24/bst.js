@@ -1,4 +1,4 @@
-import mergeSort from "./merge-sort.js";
+import { mergeSort, removeDupes } from "./util.js";
 
 class Queue {
 	constructor() {
@@ -32,19 +32,20 @@ class TreeNode {
 
 class Tree {
 	constructor(arr) {
-		// first clone the inputted array, then remove duplicates, then sort it.
-		const array = mergeSort([...new Set(arr.slice())]);
-		this.root = this.buildTree(array, 0, array.length - 1);
+		// first remove duplicates from array, then sort it.
+		// (faster than the other way around).
+		const array = mergeSort(removeDupes(arr));
+		this.root = this._buildTree(array, 0, array.length - 1);
 	}
 
-	buildTree(arr, start, end) {
+	_buildTree(arr, start, end) {
 		if (start > end) return null;
 
 		const mid = parseInt((start + end) / 2);
 		const root = new TreeNode(arr[mid]);
 
-		root.left = this.buildTree(arr, start, mid - 1);
-		root.right = this.buildTree(arr, mid + 1, end);
+		root.left = this._buildTree(arr, start, mid - 1);
+		root.right = this._buildTree(arr, mid + 1, end);
 
 		return root;
 	}

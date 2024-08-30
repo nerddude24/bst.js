@@ -1,4 +1,4 @@
-export default function mergeSort(arr) {
+function mergeSort(arr) {
 	if (!isNaN(arr)) return arr;
 
 	const halfLen = Math.round(arr.length / 2);
@@ -28,3 +28,9 @@ export default function mergeSort(arr) {
 	// eg: [[0], [2], [20]] becomes [0, 2, 20].
 	return final.flat();
 }
+
+function removeDupes(arr) {
+	return [...new Set(arr)];
+}
+
+export { mergeSort, removeDupes };
