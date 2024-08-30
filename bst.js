@@ -1,5 +1,27 @@
 import mergeSort from "./merge-sort.js";
 
+class Queue {
+	constructor() {
+		this._array = [];
+	}
+
+	enqueue(val) {
+		this._array.push();
+	}
+
+	pop(val) {
+		return this._array.shift();
+	}
+
+	length() {
+		return this._array.length;
+	}
+
+	isEmpty() {
+		return this._array.length === 0;
+	}
+}
+
 class TreeNode {
 	constructor(val) {
 		this.val = val;
