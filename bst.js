@@ -6,10 +6,10 @@ class Queue {
 	}
 
 	enqueue(val) {
-		this._array.push();
+		this._array.push(val);
 	}
 
-	pop(val) {
+	pop() {
 		return this._array.shift();
 	}
 
@@ -118,6 +118,23 @@ class Tree {
 
 		if (target < root.val) return this.find(target, root.left);
 		else return this.find(target, root.right);
+	}
+
+	// Basically forEach for trees, this is a level order variant.
+	// More info here: https://youtu.be/86g8jAQug04
+	levelOrder(cb) {
+		const nodeQueue = new Queue();
+		nodeQueue.enqueue(this.root);
+
+		while (!nodeQueue.isEmpty()) {
+			const node = nodeQueue.pop();
+			if (node == null) continue;
+
+			cb(node);
+
+			nodeQueue.enqueue(node.left);
+			nodeQueue.enqueue(node.right);
+		}
 	}
 }
 

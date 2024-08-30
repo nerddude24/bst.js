@@ -15,19 +15,17 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 
 const tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 prettyPrint(tree.root);
+
 console.log("----------------------------------------");
 tree.insert(0);
 tree.insert(11);
-tree.insert(10);
-prettyPrint(tree.root);
-console.log("----------------------------------------");
 tree.remove(1);
-tree.remove(9);
-tree.remove(7);
 prettyPrint(tree.root);
+
 console.log("----------------------------------------");
 tree.remove(tree.root.val);
 prettyPrint(tree.root);
 
-console.log(tree.find(0));
-console.log(tree.find(9000));
+console.log("----------------------------------------");
+tree.levelOrder((node) => (node.val *= 2));
+prettyPrint(tree.root);
