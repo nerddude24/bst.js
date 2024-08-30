@@ -179,7 +179,6 @@ class Tree {
 	}
 
 	depth(target, root = this.root) {
-		// base cases
 		if (root === null) return NaN;
 		if (root.val === target) return 0;
 
@@ -188,7 +187,6 @@ class Tree {
 	}
 
 	height(target, root = this.find(target)) {
-		// base cases
 		if (root === null) return -1;
 
 		return (
