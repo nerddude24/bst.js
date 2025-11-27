@@ -1,5 +1,5 @@
 {
-	"name": "merge-sort.js",
+	"name": "bst.js",
 	"version": "1.1.1",
 	"description": "Binary Search Tree implementation in JS.",
 	"type": "module",
